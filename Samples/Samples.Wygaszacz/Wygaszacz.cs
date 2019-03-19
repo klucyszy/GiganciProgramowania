@@ -19,17 +19,23 @@ namespace Samples.Wygaszacz
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Akcja zostanie wywołana podczas załadowania okna po włączeniu programu.
+        /// </summary>
         private void Wygaszacz_Load(object sender, EventArgs e)
         {
             SetMousePosition(); // ustaw aktualna pozycję kursora myszy
             LoadPicturesFromFolder(picturesFolder); // załaduj zdjęcia z folderu
             SetBackgroundImage(0); // ustawiamy pierwszy obrazek jako tło
 
-            Cursor.Hide();
-            this.WindowState = FormWindowState.Maximized;
-            licznik.Start();
+            Cursor.Hide(); // ukryj kursor myszy
+            this.WindowState = FormWindowState.Maximized; // okno na pełen ekran
+            licznik.Start(); // rozpocznij pomiar czasu
         }
 
+        /// <summary>
+        /// Akcja zostanie wykonana, kiedy upłynie wyznaczony okres czasu.
+        /// </summary>
         private void Timer1_Tick(object sender, EventArgs e)
         {
             var lastPicture = Pictures.Length - 1;
@@ -43,16 +49,25 @@ namespace Samples.Wygaszacz
             }
         }
 
+        /// <summary>
+        /// Akcja zostanie wykonana, kiedy zostanie wciśnięty dowolny przycisk klawiatury.
+        /// </summary>
         private void Wygaszacz_KeyDown(object sender, KeyEventArgs e)
         {
             Application.Exit();
         }
 
+        /// <summary>
+        /// Akcja zostanie wykonana, kiedy zostanie wciśnięty dowolny przycisk myszy.
+        /// </summary>
         private void Wygaszacz_MouseClick(object sender, MouseEventArgs e)
         {
             Application.Exit();
         }
 
+        /// <summary>
+        /// Akcja zostanie wykonana, kiedy pozycja myszy zmieni się.
+        /// </summary>
         private void Wygaszacz_MouseMove(object sender, MouseEventArgs e)
         {
             var x = Cursor.Position.X;
@@ -64,12 +79,19 @@ namespace Samples.Wygaszacz
             }
         }
 
+        /// <summary>
+        /// Ustaw aktualną pozycję myszki.
+        /// </summary>
         private void SetMousePosition()
         {
             X = Cursor.Position.X;
             Y = Cursor.Position.Y;
         }
 
+        /// <summary>
+        /// Załaduj zdjęcia ze wskazanego folderu.
+        /// </summary>
+        /// <param name="folderPath">Ścieżka do folderu z którego mają zostać załadowane pliki</param>
         private void LoadPicturesFromFolder(string folderPath)
         {
             try
@@ -90,6 +112,11 @@ namespace Samples.Wygaszacz
                     "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        /// <summary>
+        /// Ustaw zdjęcie aplikacji na wskazane w parametrze.
+        /// </summary>
+        /// <param name="position">Pozycja zdjęcia w tablicy zdjęć pobranych z danego folderu.</param>
         private void SetBackgroundImage(int position)
         {            
             this.BackgroundImage = Image.FromFile(Pictures[position]);
