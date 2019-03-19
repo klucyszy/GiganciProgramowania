@@ -118,9 +118,19 @@ namespace Samples.Wygaszacz
         /// </summary>
         /// <param name="position">Pozycja zdjęcia w tablicy zdjęć pobranych z danego folderu.</param>
         private void SetBackgroundImage(int position)
-        {            
-            this.BackgroundImage = Image.FromFile(Pictures[position]);
-            CurrentPicture = position;
+        {
+            try
+            {
+                this.BackgroundImage = Image.FromFile(Pictures[position]);
+                CurrentPicture = position;
+            }
+            catch (Exception)
+            {
+                MessageBox.Show(
+                    $"Nie udało się załadować obrazka {Pictures[position]}",
+                    "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
         }
     }
 }
