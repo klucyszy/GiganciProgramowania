@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace Samples.Wygaszacz
+namespace Samples.CezarCipher
 {
     static class Program
     {
@@ -13,7 +13,8 @@ namespace Samples.Wygaszacz
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Wygaszacz());
+            Application.Run(new Cipher());
+            
         }
     }
 }
