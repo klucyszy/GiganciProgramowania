@@ -7,7 +7,7 @@ namespace Samples.Tests
     public class CezarCipherTests
     {
         [TestMethod]
-        public void extended_cezar_cipher_work_on_A_to_z()
+        public void Extended_cezar_cipher_work_on_A_to_z()
         {
             //Given
             var testValue = "A";
@@ -19,7 +19,7 @@ namespace Samples.Tests
         }
 
         [TestMethod]
-        public void extended_cezar_cipher_work_on_B_to_A()
+        public void Extended_cezar_cipher_work_on_B_to_A()
         {
             //Given
             var testValue = "B";
@@ -31,7 +31,7 @@ namespace Samples.Tests
         }
 
         [TestMethod]
-        public void extended_cezar_cipher_work_on_A_to_a()
+        public void Extended_cezar_cipher_work_on_A_to_a()
         {
             //Given
             var testValue = "A";
@@ -43,7 +43,7 @@ namespace Samples.Tests
         }
 
         [TestMethod]
-        public void extended_cezar_cipher_work_on_Z_to_z()
+        public void Extended_cezar_cipher_work_on_Z_to_z()
         {
             //Given
             var testValue = "Z";
