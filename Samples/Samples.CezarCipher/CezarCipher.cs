@@ -21,45 +21,37 @@ namespace Samples.CezarCipher
 
             foreach (char _char in char_array)
             {
-                //Pomijamy, jeżeli znak to spacja, kropka, lub przecinek
-                if (_char == ' ' || _char == '.' || _char == ',')
+                //Deklarujemy nowy znak
+                char _newChar = (char)(_char + modulo_delay);
+
+                if (_char >= 'A' && _char <= 'Z')
+                {
+                    if (_newChar > 'Z')
+                    {
+                        _newChar = (char)(_newChar + 6);
+                        if (_newChar > 'z')
+                        {
+                            var move = _newChar - 'z';
+                            _newChar = (char)('A' + move - 1);
+                        }
+                    }
+                }
+                else if (_char >= 'a' && _char <= 'z')
+                {
+                    if (_char + modulo_delay > 'z')
+                    {
+                        var move = _newChar - 'z';
+                        _newChar = (char)('A' + move - 1);
+                    }
+                }
+                else
                 {
                     result += _char;
                     continue;
                 }
 
-                //Deklarujemy nowy znak
-                char _newChar = (char)(_char + modulo_delay);
-
-                // Jeżeli nowy znak jest większy od 'z' (122)
-                if (_newChar > 'z')
-                {
-                    //Jeżeli znak wpadł w zakres pomiędzy 'Z' (65) a 'a' (90) czyli w zakres (91-96)
-                    if (_char >= 'A' && _char <= 'Z')
-                    {
-                        //Do wartości nowego znaku dodajemy 6;
-                        _newChar = (char)(_newChar + 6);
-                    }
-                    else
-                    {
-                        //Poprawiamy przesunięcie modulo tj. nowyZnak - 122;
-                        //do 'A' (65) dodajemy wartość przesunięcia
-                        modulo_delay = _newChar - 'z';
-                        _newChar = (char)('A' + modulo_delay);
-                    }
-                }
-
-                //Jeżeli nowyZnak wpadł w zakres pomiędzy 'Z' (90) a 'a' (97) czyli w zakres (91-96)
-                if (_newChar > 'Z' && _newChar < 'a')
-                {
-                    //Do wartości nowego znaku dodajemy 6;
-                    _newChar = (char)(_newChar + 6);
-                }
-
-                //Po każdej iteracji nadpisujemy wartość wyniku o nowy znak
-                result += _newChar;
+                result += _newChar.ToString();
             }
-
             return result;
         }
 
@@ -76,13 +68,6 @@ namespace Samples.CezarCipher
 
             foreach (char _char in char_array)
             {
-                //Pomijamy, jeżeli znak to spacja, kropka, lub przecinek
-                if (_char == ' ' || _char == '.' || _char == ',')
-                {
-                    result += _char;
-                    continue;
-                }
-
                 //Deklarujemy nowy znak
                 char _newChar = (char)(_char + modulo_delay);
 
@@ -91,17 +76,22 @@ namespace Samples.CezarCipher
                 {
                     if (_newChar > 'Z')
                     {
-                        modulo_delay = modulo_delay - 'Z';
-                        _newChar = (char)('a' + modulo_delay);
+                        var move = _newChar - 'Z';
+                        _newChar = (char)('A' + move - 1);
+                    }
+                }
+                else if (_char >= 'a' && _char <= 'z')
+                {
+                    if (_newChar > 'z')
+                    {
+                        var move = _newChar - 'z';
+                        _newChar = (char)('a' + move - 1);
                     }
                 }
                 else
                 {
-                    if (_newChar > 'z')
-                    {
-                        modulo_delay = modulo_delay - 'z';
-                        _newChar = (char)('A' + modulo_delay);
-                    }
+                    result += _char;
+                    continue;
                 }
 
                 //Po każdej iteracji nadpisujemy wartość wyniku o nowy znak
