@@ -31,8 +31,8 @@ namespace Samples.CezarCipher
                         _newChar = (char)(_newChar + 6);
                         if (_newChar > 'z')
                         {
-                            modulo_delay = _newChar - 'z';
-                            _newChar = (char)('A' + modulo_delay - 1);
+                            var move = _newChar - 'z';
+                            _newChar = (char)('A' + move - 1);
                         }
                     }
                 }
@@ -40,8 +40,8 @@ namespace Samples.CezarCipher
                 {
                     if (_char + modulo_delay > 'z')
                     {
-                        modulo_delay = _newChar - 'z';
-                        _newChar = (char)('A' + modulo_delay - 1);
+                        var move = _newChar - 'z';
+                        _newChar = (char)('A' + move - 1);
                     }
                 }
                 else
@@ -68,13 +68,6 @@ namespace Samples.CezarCipher
 
             foreach (char _char in char_array)
             {
-                //Pomijamy, jeżeli znak to spacja, kropka, lub przecinek
-                if (_char == ' ' || _char == '.' || _char == ',')
-                {
-                    result += _char;
-                    continue;
-                }
-
                 //Deklarujemy nowy znak
                 char _newChar = (char)(_char + modulo_delay);
 
@@ -83,17 +76,22 @@ namespace Samples.CezarCipher
                 {
                     if (_newChar > 'Z')
                     {
-                        modulo_delay -= 'Z';
-                        _newChar = (char)('a' + modulo_delay);
+                        var move = _newChar - 'Z';
+                        _newChar = (char)('A' + move - 1);
+                    }
+                }
+                else if (_char >= 'a' && _char <= 'z')
+                {
+                    if (_newChar > 'z')
+                    {
+                        var move = _newChar - 'z';
+                        _newChar = (char)('a' + move - 1);
                     }
                 }
                 else
                 {
-                    if (_newChar > 'z')
-                    {
-                        modulo_delay -= 'z';
-                        _newChar = (char)('A' + modulo_delay);
-                    }
+                    result += _char;
+                    continue;
                 }
 
                 //Po każdej iteracji nadpisujemy wartość wyniku o nowy znak
