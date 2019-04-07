@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Samples.WebBrowser.Logic;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -23,48 +24,83 @@ namespace Samples.WebBrowser
     /// </summary>
     public sealed partial class MainPage : Page
     {
+        public FavoritesRepository Favorites { get; set; }
+
         public MainPage()
         {
-            this.InitializeComponent();
-
-            var appView = ApplicationView.GetForCurrentView();
-            appView.Title = "Moja przeglądarka!";
-
-
-            var homePage = new Uri("https://google.com");
-            _WebView.Navigate(homePage);
+            InitializeComponent();
+            InitializeFavorites();
+            InitializeMainPage();
         }
 
         private void Back_Click(object sender, RoutedEventArgs e)
         {
-            if (_WebView.CanGoBack)
+            if (_webView.CanGoBack)
             {
-                _WebView.GoBack();
+                _webView.GoBack();
             }           
         }
 
         private void Forward_Click(object sender, RoutedEventArgs e)
         {
-            if (_WebView.CanGoForward)
+            if (_webView.CanGoForward)
             {
-                _WebView.GoForward();
+                _webView.GoForward();
             }
         }
 
         private void Stop_Click(object sender, RoutedEventArgs e)
         {
-            _WebView.Stop();
+            _webView.Stop();
         }
 
         private void Refresh_Click(object sender, RoutedEventArgs e)
         {
-            _WebView.Refresh();
+            _webView.Refresh();
         }
 
-        private void Favorite_Click(object sender, RoutedEventArgs e)
+        private async void Favorite_Click(object sender, RoutedEventArgs e)
         {
+            var currentSiteUrl = _webView.Source.ToString();
+            var addToFavoritesDialog = new AddToFavorites(currentSiteUrl);
+            await addToFavoritesDialog.ShowAsync();
 
+            if(addToFavoritesDialog.Result == AddToFavoritesResult.Add)
+            {
+                Favorites.Add(addToFavoritesDialog.SiteName, addToFavoritesDialog.SiteUrl);
+
+                //_favoritesComboBox.ItemsSource = Favorites.Get();
+            }
         }
 
+        private void _webView_NavigationCompleted(WebView sender, WebViewNavigationCompletedEventArgs args)
+        {
+            //Set the loaded site to _urlTextBox
+            _urlTextBox.Text = sender.Source.ToString();
+
+            _backButton.IsEnabled = sender.CanGoBack;
+            _forwardButton.IsEnabled = sender.CanGoForward;
+        }
+
+        private void _favoritesComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var selectedItem = _favoritesComboBox.SelectedItem as Favorite;
+            _urlTextBox.Text = selectedItem.SiteUrl.ToString();
+            _webView.Navigate(selectedItem.SiteUrl);
+        }
+
+        private void InitializeFavorites()
+        {
+            Favorites = new FavoritesRepository();
+            _favoritesComboBox.ItemsSource = Favorites.Get();
+        }
+
+        private void InitializeMainPage()
+        {
+            var appView = ApplicationView.GetForCurrentView();
+            appView.Title = "Moja przeglądarka!";
+            var homePage = new Uri("https://google.com");
+            _webView.Navigate(homePage);
+        }
     }
 }

@@ -9,13 +9,14 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-        <Button Content="◄" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Click="Back_Click"/>
-        <Button Content="►" HorizontalAlignment="Left" Margin="47,10,0,0" VerticalAlignment="Top" Click="Forward_Click"/>
-        <Button Content="╳" HorizontalAlignment="Left" Margin="84,10,0,0" VerticalAlignment="Top" Click="Stop_Click"/>
-        <Button Content="↻" HorizontalAlignment="Left" Margin="123,10,0,0" VerticalAlignment="Top" Click="Refresh_Click"/>
-        <Button Content="♡" HorizontalAlignment="Left" Margin="1129,10,0,0" VerticalAlignment="Top" Click="Favorite_Click"/>
-        <TextBox HorizontalAlignment="Left" Margin="160,10,0,0" Text="TextBox" VerticalAlignment="Top" Width="964"/>
-        <ComboBox HorizontalAlignment="Left" Margin="1164,10,0,0" VerticalAlignment="Top" Width="106"/>
-        <WebView Name="_WebView" HorizontalAlignment="Center" Width="1260" Margin="0,50,0,10"/>
+
+        <Button Content="◄" Name="_backButton" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Click="Back_Click"/>
+        <Button Content="►" Name="_forwardButton" HorizontalAlignment="Left" Margin="47,10,0,0" VerticalAlignment="Top" Click="Forward_Click"/>
+        <Button Content="╳" Name="_stopButton" HorizontalAlignment="Left" Margin="84,10,0,0" VerticalAlignment="Top" Click="Stop_Click"/>
+        <Button Content="↻" Name="_reloadButton" HorizontalAlignment="Left" Margin="123,10,0,0" VerticalAlignment="Top" Click="Refresh_Click"/>
+        <Button Content="♡" Name="_addToFavoritesButton" HorizontalAlignment="Left" Margin="1129,10,0,0" VerticalAlignment="Top" Click="Favorite_Click"/>
+        <TextBox Name="_urlTextBox" HorizontalAlignment="Left" Margin="160,10,0,0" Text="TextBox" VerticalAlignment="Top" Width="967"/>
+        <ComboBox Name="_favoritesComboBox" HorizontalAlignment="Left" Margin="1164,10,0,0" VerticalAlignment="Top" Width="106" SelectionChanged="_favoritesComboBox_SelectionChanged" />
+        <WebView Name="_webView" HorizontalAlignment="Left" Width="1260" Margin="10,54,0,6" NavigationCompleted="_webView_NavigationCompleted"/>
     </Grid>
 </Page>
