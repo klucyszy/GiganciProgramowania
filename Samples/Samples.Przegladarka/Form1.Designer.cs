@@ -124,6 +124,7 @@
             this.webBrowser1.Name = "webBrowser1";
             this.webBrowser1.Size = new System.Drawing.Size(1054, 454);
             this.webBrowser1.TabIndex = 8;
+            this.webBrowser1.Navigated += new System.Windows.Forms.WebBrowserNavigatedEventHandler(this.WebBrowser1_Navigated);
             // 
             // Podpis
             // 

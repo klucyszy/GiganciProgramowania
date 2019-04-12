@@ -12,6 +12,8 @@ namespace Samples.Przegladarka
 {
     public partial class Form1 : Form
     {
+        private UserControl _dodajUlubiony;
+
         //plik konfiguracyjny
         private string _homePage = "https://google.com";
 
@@ -67,9 +69,19 @@ namespace Samples.Przegladarka
             this.webBrowser1.Stop();
         }
 
+        //Dodaj do ulubionych
         private void Button5_Click(object sender, EventArgs e)
         {
+            if (_dodajUlubiony != null) _dodajUlubiony.Dispose();
+            _dodajUlubiony = new UserControl1();    
 
+            var xLocation = this.Size.Width / 2 - _dodajUlubiony.Width / 2;
+            var yLocation = this.Size.Height /2 - _dodajUlubiony.Height / 2;
+
+
+            _dodajUlubiony.Location = new Point(xLocation, yLocation);
+            Controls.Add(_dodajUlubiony);
+            _dodajUlubiony.BringToFront();
         }
 
         private void Button6_Click(object sender, EventArgs e)
@@ -79,13 +91,26 @@ namespace Samples.Przegladarka
 
         private void TextBox1_KeyDown(object sender, KeyEventArgs e)
         {
+            var urlText = this.textBox1.Text;
             if(e.KeyCode == Keys.Enter)
             {
-                if (this.textBox1.Text != string.Empty)
+                if (urlText != string.Empty)
                 {
+                    Uri result;
+                    if(!Uri.TryCreate(urlText, UriKind.Absolute, out result))
+                    {
+                        MessageBox.Show("Błąd", "Błędny adres",
+                            MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+
                     this.webBrowser1.Navigate(this.textBox1.Text);
                 }
             }
+        }
+
+        private void WebBrowser1_Navigated(object sender, WebBrowserNavigatedEventArgs e)
+        {
+            textBox1.Text = webBrowser1.Url.ToString();
         }
     }
 }
