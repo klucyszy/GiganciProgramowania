@@ -4,8 +4,11 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Threading.Tasks;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.System;
+using Windows.UI.Popups;
 using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -68,8 +71,6 @@ namespace Samples.WebBrowser
             if(addToFavoritesDialog.Result == AddToFavoritesResult.Add)
             {
                 Favorites.Add(addToFavoritesDialog.SiteName, addToFavoritesDialog.SiteUrl);
-
-                //_favoritesComboBox.ItemsSource = Favorites.Get();
             }
         }
 
@@ -90,7 +91,7 @@ namespace Samples.WebBrowser
         }
 
         private void InitializeFavorites()
-        {
+        { 
             Favorites = new FavoritesRepository();
             _favoritesComboBox.ItemsSource = Favorites.Get();
         }
@@ -101,6 +102,24 @@ namespace Samples.WebBrowser
             appView.Title = "Moja przeglądarka!";
             var homePage = new Uri("https://google.com");
             _webView.Navigate(homePage);
+        }
+
+        private async void _urlTextBox_KeyDown(object sender, KeyRoutedEventArgs e)
+        {
+            if (e.Key != VirtualKey.Enter)
+                return;
+
+            var searchedSite = _urlTextBox.Text;
+            if (searchedSite.HasHttpScheme() || searchedSite.HasHttpsScheme())
+            {
+                _webView.Navigate(new Uri(searchedSite));
+            }
+            else
+            {
+                var dialog = new MessageDialog("Please type valid site address.");
+                await dialog.ShowAsync();
+            }
+
         }
     }
 }

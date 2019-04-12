@@ -9,17 +9,22 @@ namespace Samples.WebBrowser.Logic
 {
     public class FavoritesRepository
     {
+        private readonly FavoriteFileStorage _fileStorage;
+
         public ObservableCollection<Favorite> Favorites { get; set; }
 
         public FavoritesRepository()
         {
-            Favorites = new ObservableCollection<Favorite>();
+            _fileStorage = new FavoriteFileStorage();
+            Favorites = new ObservableCollection<Favorite>(_fileStorage.Read());
         }
 
         public void Add(string siteName, string siteUrl)
         {
             //TODO: Check if siteUrl is already in list
             Favorites.Add(new Favorite(siteName, siteUrl));
+
+            _fileStorage.Save(Favorites.ToList());
         }
 
         public ObservableCollection<Favorite> Get()
