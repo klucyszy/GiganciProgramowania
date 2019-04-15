@@ -47,5 +47,10 @@ namespace Samples.WebBrowser
         {
             Result = AddToFavoritesResult.Cancel;
         }
+
+        private void _siteNameTextBox_BringIntoViewRequested(UIElement sender, BringIntoViewRequestedEventArgs args)
+        {
+
+        }
     }
 }

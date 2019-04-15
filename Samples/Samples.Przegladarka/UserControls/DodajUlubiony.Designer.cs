@@ -1,6 +1,6 @@
 ﻿namespace Samples.Przegladarka
 {
-    partial class UserControl1
+    partial class DodajUlubiony
     {
         /// <summary> 
         /// Required designer variable.
@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.nazwaTextBox = new System.Windows.Forms.TextBox();
+            this.urlTextBox = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.Anuluj = new System.Windows.Forms.Button();
-            this.Dodaj = new System.Windows.Forms.Button();
+            this.anulujButton = new System.Windows.Forms.Button();
+            this.dodajButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -46,19 +46,19 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Dodaj do ulubionych";
             // 
-            // textBox1
+            // nazwaTextBox
             // 
-            this.textBox1.Location = new System.Drawing.Point(104, 49);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(308, 20);
-            this.textBox1.TabIndex = 1;
+            this.nazwaTextBox.Location = new System.Drawing.Point(104, 49);
+            this.nazwaTextBox.Name = "nazwaTextBox";
+            this.nazwaTextBox.Size = new System.Drawing.Size(308, 20);
+            this.nazwaTextBox.TabIndex = 1;
             // 
-            // textBox2
+            // urlTextBox
             // 
-            this.textBox2.Location = new System.Drawing.Point(104, 75);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(308, 20);
-            this.textBox2.TabIndex = 2;
+            this.urlTextBox.Location = new System.Drawing.Point(104, 75);
+            this.urlTextBox.Name = "urlTextBox";
+            this.urlTextBox.Size = new System.Drawing.Size(308, 20);
+            this.urlTextBox.TabIndex = 2;
             // 
             // label2
             // 
@@ -76,34 +76,36 @@
             this.label3.TabIndex = 4;
             this.label3.Text = "Adres URL";
             // 
-            // Anuluj
+            // anulujButton
             // 
-            this.Anuluj.Location = new System.Drawing.Point(28, 111);
-            this.Anuluj.Name = "Anuluj";
-            this.Anuluj.Size = new System.Drawing.Size(189, 23);
-            this.Anuluj.TabIndex = 5;
-            this.Anuluj.Text = "Anuluj";
-            this.Anuluj.UseVisualStyleBackColor = true;
+            this.anulujButton.Location = new System.Drawing.Point(28, 111);
+            this.anulujButton.Name = "anulujButton";
+            this.anulujButton.Size = new System.Drawing.Size(189, 23);
+            this.anulujButton.TabIndex = 5;
+            this.anulujButton.Text = "Anuluj";
+            this.anulujButton.UseVisualStyleBackColor = true;
+            this.anulujButton.Click += new System.EventHandler(this.AnulujButton_Click);
             // 
-            // Dodaj
+            // dodajButton
             // 
-            this.Dodaj.Location = new System.Drawing.Point(223, 111);
-            this.Dodaj.Name = "Dodaj";
-            this.Dodaj.Size = new System.Drawing.Size(189, 23);
-            this.Dodaj.TabIndex = 6;
-            this.Dodaj.Text = "Dodaj";
-            this.Dodaj.UseVisualStyleBackColor = true;
+            this.dodajButton.Location = new System.Drawing.Point(223, 111);
+            this.dodajButton.Name = "dodajButton";
+            this.dodajButton.Size = new System.Drawing.Size(189, 23);
+            this.dodajButton.TabIndex = 6;
+            this.dodajButton.Text = "Dodaj";
+            this.dodajButton.UseVisualStyleBackColor = true;
+            this.dodajButton.Click += new System.EventHandler(this.DodajButton_Click);
             // 
             // UserControl1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.Dodaj);
-            this.Controls.Add(this.Anuluj);
+            this.Controls.Add(this.dodajButton);
+            this.Controls.Add(this.anulujButton);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.urlTextBox);
+            this.Controls.Add(this.nazwaTextBox);
             this.Controls.Add(this.label1);
             this.Name = "UserControl1";
             this.Size = new System.Drawing.Size(452, 150);
@@ -115,11 +117,11 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox nazwaTextBox;
+        private System.Windows.Forms.TextBox urlTextBox;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button Anuluj;
-        private System.Windows.Forms.Button Dodaj;
+        private System.Windows.Forms.Button anulujButton;
+        private System.Windows.Forms.Button dodajButton;
     }
 }
