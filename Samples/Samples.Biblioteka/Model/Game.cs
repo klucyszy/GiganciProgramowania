@@ -17,5 +17,10 @@ namespace Samples.Biblioteka.Model
             MinimumAge = minAge;
             Title = title;
         }
+
+        public override string ToString()
+        {
+            return Title;
+        }
     }
 }
