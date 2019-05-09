@@ -27,5 +27,10 @@ namespace Samples.Biblioteka.Model
         {
             Games.Remove(game);
         }
+
+        public List<Game> GetGames()
+        {
+            return Games;
+        }
     }
 }
