@@ -25,7 +25,7 @@ namespace Samples.Biblioteka.Model
         }
 
         public void SaveToFile()
-        {
+        {   
             using (var sw = new StreamWriter(@"c:\games.txt", true))
             {
                 sw.WriteLine("{0}|{1}|{2}|{3}", Title, MinimumAge, Price, Description);
