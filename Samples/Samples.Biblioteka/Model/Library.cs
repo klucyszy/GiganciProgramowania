@@ -22,5 +22,10 @@ namespace Samples.Biblioteka.Model
                 Games.Add(game);
             }
         }
+
+        public void RemoveGame(Game game)
+        {
+            Games.Remove(game);
+        }
     }
 }
