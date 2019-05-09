@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,6 +22,14 @@ namespace Samples.Biblioteka.Model
         public override string ToString()
         {
             return Title;
+        }
+
+        public void SaveToFile()
+        {
+            using (var sw = new StreamWriter(@"c:\games.txt", true))
+            {
+                sw.WriteLine("{0}|{1}|{2}|{3}", Title, MinimumAge, Price, Description);
+            }
         }
     }
 }
