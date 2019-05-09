@@ -54,5 +54,16 @@ namespace Samples.Biblioteka.Model
                 }
             }
         }
+
+        public void SaveGamesToFile()
+        {
+            using(var sw = new StreamWriter(@"c:\games.txt"))
+            {
+                foreach(var game in Games)
+                {
+                    sw.WriteLine("{0}|{1}|{2}|{3}", game.Title, game.MinimumAge, game.Price, game.Description);
+                }
+            }
+        }
     }
 }
