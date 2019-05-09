@@ -10,5 +10,11 @@ namespace Samples.Biblioteka.Model
     {
         public decimal Price { get; set; }
         public string Description { get; set; }
+
+        public LibraryObject(decimal price, string desc)
+        {
+            Price = price;
+            Description = desc;
+        }
     }
 }
