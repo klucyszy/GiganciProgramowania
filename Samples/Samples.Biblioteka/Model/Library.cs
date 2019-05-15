@@ -38,7 +38,7 @@ namespace Samples.Biblioteka.Model
         {
             Games.Clear();
 
-            using (var sr = new StreamReader(@"c:\games.txt"))
+            using (var sr = new StreamReader(@"c:\data\games.txt"))
             {
                 string line;
                 while ((line = sr.ReadLine()) != null)
@@ -57,7 +57,7 @@ namespace Samples.Biblioteka.Model
 
         public void SaveGamesToFile()
         {
-            using(var sw = new StreamWriter(@"c:\games.txt"))
+            using(var sw = new StreamWriter(@"c:\data\games.txt"))
             {
                 foreach(var game in Games)
                 {
