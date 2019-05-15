@@ -15,5 +15,12 @@ namespace Samples.Biblioteka
             _library.ImportGamesFromFile();
             gameListBox.DataSource = _library.GetGames();
         }
+
+        private void AddGameButton_Click(object sender, System.EventArgs e)
+        {
+            var newGameForm = new NewGameForm();
+
+            newGameForm.ShowDialog();
+        }
     }
 }

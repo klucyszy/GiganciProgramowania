@@ -61,6 +61,7 @@
             this.addGameButton.TabIndex = 2;
             this.addGameButton.Text = "Dodaj grę";
             this.addGameButton.UseVisualStyleBackColor = true;
+            this.addGameButton.Click += new System.EventHandler(this.AddGameButton_Click);
             // 
             // deleteGameButton
             // 
