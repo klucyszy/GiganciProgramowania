@@ -21,7 +21,7 @@ namespace Samples.Biblioteka.Model
 
         public override string ToString()
         {
-            return Title;
+            return $"Tytuł: {Title} | Cena: {Price} PLN | Wiek: {MinimumAge}+";
         }
 
         public void SaveToFile()
