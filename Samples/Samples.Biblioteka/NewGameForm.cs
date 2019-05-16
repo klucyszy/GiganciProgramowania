@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Samples.Biblioteka.Model;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +13,11 @@ namespace Samples.Biblioteka
 {
     public partial class NewGameForm : Form
     {
-        public NewGameForm()
+        public Library Library { get; private set; }
+        public NewGameForm(Library library)
         {
             InitializeComponent();
+            Library = library;
         }
     }
 }

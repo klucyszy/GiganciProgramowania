@@ -18,9 +18,12 @@ namespace Samples.Biblioteka
 
         private void AddGameButton_Click(object sender, System.EventArgs e)
         {
-            var newGameForm = new NewGameForm();
-
+            var newGameForm = new NewGameForm(_library);
             newGameForm.ShowDialog();
+
+            _library = newGameForm.Library;
+            gameListBox.DataSource = null;
+            gameListBox.DataSource = _library.Games;
         }
     }
 }
