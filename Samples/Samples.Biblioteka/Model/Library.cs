@@ -57,7 +57,7 @@ namespace Samples.Biblioteka.Model
 
         public void SaveGamesToFile()
         {
-            using(var sw = new StreamWriter(@"c:\data\games.txt"))
+            using (var sw = new StreamWriter(@"c:\data\games.txt"))
             {
                 foreach(var game in Games)
                 {

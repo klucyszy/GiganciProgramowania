@@ -28,7 +28,8 @@ namespace Samples.Biblioteka
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            MessageBox.Show("Are you sure?");
+            _library.SaveGamesToFile();
+            MessageBox.Show("Are you sure?", "Exit", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
         }
     }
 }
