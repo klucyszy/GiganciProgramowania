@@ -121,6 +121,7 @@
             this.saveButton.TabIndex = 9;
             this.saveButton.Text = "Zapisz";
             this.saveButton.UseVisualStyleBackColor = true;
+            this.saveButton.Click += new System.EventHandler(this.SaveButton_Click);
             // 
             // NewGameForm
             // 

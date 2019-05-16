@@ -19,5 +19,22 @@ namespace Samples.Biblioteka
             InitializeComponent();
             Library = library;
         }
+
+        private void SaveButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var price = decimal.Parse(priceTextBox.Text);
+                var minAge = int.Parse(minAgeTextBox.Text);
+                var game = new Game(price, descTextBox.Text, minAge, titleTextBox.Text);
+                Library.AddGame(game);
+
+                this.Hide();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("Wpisałeś błędne wartości", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }
