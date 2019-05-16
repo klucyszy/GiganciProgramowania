@@ -112,6 +112,7 @@
             this.clearButton.TabIndex = 8;
             this.clearButton.Text = "Wyczyść";
             this.clearButton.UseVisualStyleBackColor = true;
+            this.clearButton.Click += new System.EventHandler(this.ClearButton_Click);
             // 
             // saveButton
             // 

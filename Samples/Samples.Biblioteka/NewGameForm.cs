@@ -36,5 +36,13 @@ namespace Samples.Biblioteka
                 MessageBox.Show("Wpisałeś błędne wartości", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void ClearButton_Click(object sender, EventArgs e)
+        {
+            priceTextBox.Text = string.Empty;
+            minAgeTextBox.Text = string.Empty;
+            descTextBox.Text = string.Empty;
+            titleTextBox.Text = string.Empty;
+        }
     }
 }
