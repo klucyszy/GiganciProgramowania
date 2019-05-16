@@ -25,5 +25,10 @@ namespace Samples.Biblioteka
             gameListBox.DataSource = null;
             gameListBox.DataSource = _library.Games;
         }
+
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            MessageBox.Show("Are you sure?");
+        }
     }
 }
