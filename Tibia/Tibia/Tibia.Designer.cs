@@ -1,6 +1,6 @@
 ﻿namespace Tibia
 {
-    partial class Form1
+    partial class Tibia
     {
         /// <summary>
         /// Required designer variable.
@@ -28,24 +28,39 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Tibia));
+            this.accountNameTextBox = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
-            // Form1
+            // accountNameTextBox
+            // 
+            this.accountNameTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.accountNameTextBox.ForeColor = System.Drawing.SystemColors.GrayText;
+            this.accountNameTextBox.Location = new System.Drawing.Point(427, 112);
+            this.accountNameTextBox.Name = "accountNameTextBox";
+            this.accountNameTextBox.Size = new System.Drawing.Size(100, 20);
+            this.accountNameTextBox.TabIndex = 0;
+            this.accountNameTextBox.Text = "adfas";
+            // 
+            // Tibia
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Name = "Form1";
-            this.Text = "Form1";
+            this.Controls.Add(this.accountNameTextBox);
+            this.Name = "Tibia";
+            this.Text = "Tibia";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
+
+        private System.Windows.Forms.TextBox accountNameTextBox;
     }
 }
 

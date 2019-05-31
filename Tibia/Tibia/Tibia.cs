@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Tibia
 {
-    public partial class Form1 : Form
+    public partial class Tibia : Form
     {
-        public Form1()
+        public Tibia()
         {
             InitializeComponent();
         }
