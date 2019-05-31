@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Tibia));
             this.accountNameTextBox = new System.Windows.Forms.TextBox();
+            this.passwordTextBox = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // accountNameTextBox
@@ -40,7 +41,15 @@
             this.accountNameTextBox.Name = "accountNameTextBox";
             this.accountNameTextBox.Size = new System.Drawing.Size(100, 20);
             this.accountNameTextBox.TabIndex = 0;
-            this.accountNameTextBox.Text = "adfas";
+            // 
+            // passwordTextBox
+            // 
+            this.passwordTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.passwordTextBox.ForeColor = System.Drawing.SystemColors.GrayText;
+            this.passwordTextBox.Location = new System.Drawing.Point(427, 138);
+            this.passwordTextBox.Name = "passwordTextBox";
+            this.passwordTextBox.Size = new System.Drawing.Size(100, 20);
+            this.passwordTextBox.TabIndex = 1;
             // 
             // Tibia
             // 
@@ -49,6 +58,7 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.passwordTextBox);
             this.Controls.Add(this.accountNameTextBox);
             this.Name = "Tibia";
             this.Text = "Tibia";
@@ -61,6 +71,7 @@
         #endregion
 
         private System.Windows.Forms.TextBox accountNameTextBox;
+        private System.Windows.Forms.TextBox passwordTextBox;
     }
 }
 
