@@ -38,6 +38,7 @@
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.browser = new System.Windows.Forms.WebBrowser();
             this.homeButton = new System.Windows.Forms.Button();
+            this.browseMemCheckbox = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // backButton
@@ -94,7 +95,7 @@
             // 
             this.urlTextBox.Location = new System.Drawing.Point(286, 17);
             this.urlTextBox.Name = "urlTextBox";
-            this.urlTextBox.Size = new System.Drawing.Size(673, 20);
+            this.urlTextBox.Size = new System.Drawing.Size(574, 20);
             this.urlTextBox.TabIndex = 5;
             // 
             // addToFavButton
@@ -135,11 +136,22 @@
             this.homeButton.UseVisualStyleBackColor = true;
             this.homeButton.Click += new System.EventHandler(this.homeButton_Click);
             // 
+            // browseMemCheckbox
+            // 
+            this.browseMemCheckbox.AutoSize = true;
+            this.browseMemCheckbox.Location = new System.Drawing.Point(866, 18);
+            this.browseMemCheckbox.Name = "browseMemCheckbox";
+            this.browseMemCheckbox.Size = new System.Drawing.Size(97, 17);
+            this.browseMemCheckbox.TabIndex = 10;
+            this.browseMemCheckbox.Text = "Browse memes";
+            this.browseMemCheckbox.UseVisualStyleBackColor = true;
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1301, 853);
+            this.Controls.Add(this.browseMemCheckbox);
             this.Controls.Add(this.homeButton);
             this.Controls.Add(this.browser);
             this.Controls.Add(this.comboBox1);
@@ -169,5 +181,6 @@
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.WebBrowser browser;
         private System.Windows.Forms.Button homeButton;
+        private System.Windows.Forms.CheckBox browseMemCheckbox;
     }
 }

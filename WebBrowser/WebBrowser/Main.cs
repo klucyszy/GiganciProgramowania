@@ -1,4 +1,5 @@
-﻿using System.Windows.Forms;
+﻿using System;
+using System.Windows.Forms;
 
 namespace WebBrowser
 {
@@ -40,8 +41,28 @@ namespace WebBrowser
 
         private void searchButton_Click(object sender, System.EventArgs e)
         {
-            string url = urlTextBox.Text;
-            browser.Navigate(url);
+            string inputText = urlTextBox.Text;
+
+            bool isValidUri = Uri.TryCreate(inputText, UriKind.Absolute, out Uri validUrl) && validUrl.Scheme == Uri.UriSchemeHttp;
+            if (isValidUri)
+            {
+                browser.Navigate(validUrl);
+                return;
+            }
+
+            //Mem browser
+            string googleSearchUrlQuery = "www.google.com/search?q={0}";
+            string formattedUrl = string.Empty;
+            if (browseMemCheckbox.Checked)
+            {
+                formattedUrl = string.Format(googleSearchUrlQuery, inputText + " meme");
+                browser.Navigate(formattedUrl);
+            }
+            else
+            {
+                formattedUrl = string.Format(googleSearchUrlQuery, inputText);
+                browser.Navigate(formattedUrl);
+            }
         }
 
         private void addToFavButton_Click(object sender, System.EventArgs e)
