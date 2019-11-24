@@ -5,6 +5,8 @@ namespace WebBrowser
 {
     public partial class Main : Form
     {
+        private FavoritesFileManager _favoritesFileManager = new FavoritesFileManager();
+
         public string HomePageUrl { get; set; } = "www.google.com";
         private string _currentUrl = string.Empty;
 
@@ -12,6 +14,8 @@ namespace WebBrowser
         {
             InitializeComponent();
             NavigateToUrl();
+            _favoritesFileManager.ReadFromFile();
+            favoritesComboBox.DataSource = _favoritesFileManager.Favorites;
         }
 
         private void backButton_Click(object sender, System.EventArgs e)
@@ -67,7 +71,15 @@ namespace WebBrowser
 
         private void addToFavButton_Click(object sender, System.EventArgs e)
         {
-            //TODO: Next lesson
+            string currentUrl = urlTextBox.Text;
+            string title = browser.Document.Title;
+
+            _favoritesFileManager.AddToFavorites(currentUrl, title);
+
+            //refresh the 'favoritesComboBox' combo box
+            favoritesComboBox.DataSource = null;
+            favoritesComboBox.DataSource = _favoritesFileManager.Favorites;
+
         }
 
         private void browser_Navigated(object sender, WebBrowserNavigatedEventArgs e)

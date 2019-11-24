@@ -46,6 +46,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Favorite.cs" />
+    <Compile Include="FavoritesFileManager.cs" />
     <Compile Include="Main.cs">
       <SubType>Form</SubType>
     </Compile>

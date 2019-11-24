@@ -35,7 +35,7 @@
             this.searchButton = new System.Windows.Forms.Button();
             this.urlTextBox = new System.Windows.Forms.TextBox();
             this.addToFavButton = new System.Windows.Forms.Button();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.favoritesComboBox = new System.Windows.Forms.ComboBox();
             this.browser = new System.Windows.Forms.WebBrowser();
             this.homeButton = new System.Windows.Forms.Button();
             this.browseMemCheckbox = new System.Windows.Forms.CheckBox();
@@ -108,13 +108,13 @@
             this.addToFavButton.UseVisualStyleBackColor = true;
             this.addToFavButton.Click += new System.EventHandler(this.addToFavButton_Click);
             // 
-            // comboBox1
+            // favoritesComboBox
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(1022, 16);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(210, 21);
-            this.comboBox1.TabIndex = 7;
+            this.favoritesComboBox.FormattingEnabled = true;
+            this.favoritesComboBox.Location = new System.Drawing.Point(1022, 16);
+            this.favoritesComboBox.Name = "favoritesComboBox";
+            this.favoritesComboBox.Size = new System.Drawing.Size(210, 21);
+            this.favoritesComboBox.TabIndex = 7;
             // 
             // browser
             // 
@@ -154,7 +154,7 @@
             this.Controls.Add(this.browseMemCheckbox);
             this.Controls.Add(this.homeButton);
             this.Controls.Add(this.browser);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.favoritesComboBox);
             this.Controls.Add(this.addToFavButton);
             this.Controls.Add(this.urlTextBox);
             this.Controls.Add(this.searchButton);
@@ -178,7 +178,7 @@
         private System.Windows.Forms.Button searchButton;
         private System.Windows.Forms.TextBox urlTextBox;
         private System.Windows.Forms.Button addToFavButton;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox favoritesComboBox;
         private System.Windows.Forms.WebBrowser browser;
         private System.Windows.Forms.Button homeButton;
         private System.Windows.Forms.CheckBox browseMemCheckbox;
