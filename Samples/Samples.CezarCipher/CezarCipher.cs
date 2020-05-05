@@ -1,19 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Samples.CezarCipher
+﻿namespace Samples.CezarCipher
 {
-    public static class CezarCipher
+    public class CezarCipher
     {
         /// <summary>
         /// Szyfr Cezara. Wersja rozszerzona. Umożliwia przesunięcie o 51 znaków.
         /// </summary>
         /// <param name="text">Tekst do zaszyfrowania</param>
         /// <param name="delay">Przesunięcie</param>
-        public static string Extended(string text, int delay)
+        public string Extended(string text, int delay)
         {
             var result = string.Empty;
             var char_array = text.ToCharArray();
@@ -60,7 +54,7 @@ namespace Samples.CezarCipher
         /// </summary>
         /// <param name="text">Tekst do zaszyfrowania</param>
         /// <param name="delay">Przesunięcie</param>
-        public static string Basic(string text, int delay)
+        public string Basic(string text, int delay)
         {
             var result = string.Empty;
             var char_array = text.ToCharArray();

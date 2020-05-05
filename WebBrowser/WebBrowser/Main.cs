@@ -4,18 +4,16 @@ using System.Windows.Forms;
 namespace WebBrowser
 {
     public partial class Main : Form
-    {
-        private FavoritesFileManager _favoritesFileManager = new FavoritesFileManager();
-
+    {        
         public string HomePageUrl { get; set; } = "www.google.com";
-        private string _currentUrl = string.Empty;
+        
+        private FavoritesFileRepository _repository = new FavoritesFileRepository();
 
         public Main()
         {
             InitializeComponent();
-            NavigateToUrl();
-            _favoritesFileManager.ReadFromFile();
-            favoritesComboBox.DataSource = _favoritesFileManager.Favorites;
+            browser.Navigate(HomePageUrl);
+            favoritesComboBox.DataSource = _repository.Get();
         }
 
         private void backButton_Click(object sender, System.EventArgs e)
@@ -45,16 +43,17 @@ namespace WebBrowser
 
         private void searchButton_Click(object sender, System.EventArgs e)
         {
+            //1. obsługa prawidłowych adresow np. http://google.com
             string inputText = urlTextBox.Text;
-
-            bool isValidUri = Uri.TryCreate(inputText, UriKind.Absolute, out Uri validUrl) && validUrl.Scheme == Uri.UriSchemeHttp;
+            bool isValidUri = Uri.TryCreate(inputText, UriKind.Absolute, out Uri validUrl) && (validUrl.Scheme == Uri.UriSchemeHttp || validUrl.Scheme == Uri.UriSchemeHttps);
             if (isValidUri)
             {
                 browser.Navigate(validUrl);
                 return;
             }
 
-            //Mem browser
+            
+            //2. Obsluga wpisywania dowolnego tekstu w pasku url
             string googleSearchUrlQuery = "www.google.com/search?q={0}";
             string formattedUrl = string.Empty;
             if (browseMemCheckbox.Checked)
@@ -74,11 +73,11 @@ namespace WebBrowser
             string currentUrl = urlTextBox.Text;
             string title = browser.Document.Title;
 
-            _favoritesFileManager.AddToFavorites(currentUrl, title);
+            _repository.Add(new Favorite(title, currentUrl));
 
             //refresh the 'favoritesComboBox' combo box
             favoritesComboBox.DataSource = null;
-            favoritesComboBox.DataSource = _favoritesFileManager.Favorites;
+            favoritesComboBox.DataSource = _repository.Get();
 
         }
 
@@ -89,64 +88,15 @@ namespace WebBrowser
 
             urlTextBox.Text = browser.Url.ToString();
 
-            if (browser.CanGoBack)
-            {
-                backButton.Enabled = true;
-            }
-            else
-            {
-                backButton.Enabled = false;
-            }
+            backButton.Enabled = browser.CanGoBack;
+            goForwardButton.Enabled = browser.CanGoForward;
 
-            if (browser.CanGoForward)
-            {
-                goForwardButton.Enabled = true;
-            }
-            else
-            {
-                goForwardButton.Enabled = false;
-            }
         }
 
         private void browser_Navigating(object sender, WebBrowserNavigatingEventArgs e)
         {
             stopButton.Enabled = true;
             reloadButton.Enabled = false;
-        }
-
-        // Własne metody
-        private void NavigateToUrl()
-        {
-            _currentUrl = urlTextBox.Text;
-            if (string.IsNullOrEmpty(_currentUrl))
-            {
-                _currentUrl = HomePageUrl;
-                browser.Navigate(HomePageUrl);
-            }
-            else
-            {
-                browser.Navigate(_currentUrl);
-            }
-
-            //obsługa przycisków back i goForward
-            //TODO: Wydzielic obsluge przyciskow do oddzielnych metod
-            if (browser.CanGoBack)
-            {
-                backButton.Enabled = true;
-            }
-            else
-            {
-                backButton.Enabled = false;
-            }
-
-            if (browser.CanGoForward)
-            {
-                goForwardButton.Enabled = true;
-            }
-            else
-            {
-                goForwardButton.Enabled = false;
-            }
         }
     }
 }

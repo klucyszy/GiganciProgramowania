@@ -5,8 +5,8 @@ namespace Samples.Biblioteka
 {
     public partial class LoginForm : Form
     {
-        private string _login = "user";
-        private string _password = "user1234";
+        private string _login = "admin";
+        private string _password = "admin";
 
         public LoginForm()
         {

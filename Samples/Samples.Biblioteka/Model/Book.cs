@@ -1,38 +1,39 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Samples.Biblioteka.Model
 {
-    public class Game : LibraryObject
+    public class Book : LibraryObject
     {
-        public int MinimumAge { get; set; }
+        public string Author { get; set; }
         public string Title { get; set; }
 
-        public Game(decimal price, string desc, int minAge, string title)
+        public Book(decimal price, string desc, string author, string title)
             : base(price, desc)
         {
-            MinimumAge = minAge;
+            Author = author;
             Title = title;
         }
 
-        public Game(string[] values) : base(values)
+        public Book(string[] values) : base(values)
         {
             Title = values[3];
-            MinimumAge = int.Parse(values[4]);
+            Author = values[4];
         }
 
         public override string ToString()
         {
-            return $"Kategoria: Gry | Tytuł: {Title} | Cena: {Price} PLN | Wiek: {MinimumAge}+";
+            return $"Kategoria: Książki | Tytuł: {Title} | Cena: {Price} PLN | Autor: {Author}";
         }
 
         public override string Serialize()
         {
-            return $"{base.Serialize()}|{Title}|{MinimumAge}";
+            return $"{base.Serialize()}|{Title}|{Author}";
         }
+
+
     }
 }

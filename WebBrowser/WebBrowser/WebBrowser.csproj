@@ -48,6 +48,7 @@
   <ItemGroup>
     <Compile Include="Favorite.cs" />
     <Compile Include="FavoritesFileManager.cs" />
+    <Compile Include="FavoritesFileRepository.cs" />
     <Compile Include="Main.cs">
       <SubType>Form</SubType>
     </Compile>

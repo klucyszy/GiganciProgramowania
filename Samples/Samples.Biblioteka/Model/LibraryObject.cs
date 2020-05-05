@@ -16,5 +16,16 @@ namespace Samples.Biblioteka.Model
             Price = price;
             Description = desc;
         }
+
+        public LibraryObject(string[] values)
+        {
+            Price = int.Parse(values[1]);
+            Description = values[2];
+        }
+
+        public virtual string Serialize()
+        {
+            return $"{Price}|{Description}";
+        }
     }
 }

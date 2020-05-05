@@ -1,20 +1,14 @@
 ﻿using Samples.Biblioteka.Model;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Samples.Biblioteka
 {
     public partial class NewGameForm : Form
     {
-        public Library Library { get; private set; }
-        public NewGameForm(Library library)
+        public LibraryRepository Library { get; private set; }
+
+        public NewGameForm(LibraryRepository library)
         {
             InitializeComponent();
             Library = library;
@@ -27,11 +21,11 @@ namespace Samples.Biblioteka
                 var price = decimal.Parse(priceTextBox.Text);
                 var minAge = int.Parse(minAgeTextBox.Text);
                 var game = new Game(price, descTextBox.Text, minAge, titleTextBox.Text);
-                Library.AddGame(game);
+                Library.Add(game);
 
                 this.Hide();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show("Wpisałeś błędne wartości", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }

@@ -42,6 +42,7 @@
             this.accountNameTextBox.Name = "accountNameTextBox";
             this.accountNameTextBox.Size = new System.Drawing.Size(100, 20);
             this.accountNameTextBox.TabIndex = 0;
+            this.accountNameTextBox.Text = " Tekst ść";
             // 
             // passwordTextBox
             // 

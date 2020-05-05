@@ -58,8 +58,9 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Model\Book.cs" />
     <Compile Include="Model\Game.cs" />
-    <Compile Include="Model\Library.cs" />
+    <Compile Include="Model\LibraryRepository.cs" />
     <Compile Include="Model\LibraryObject.cs" />
     <Compile Include="NewGameForm.cs">
       <SubType>Form</SubType>
